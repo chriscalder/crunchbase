@@ -18,12 +18,12 @@ API_URL      = API_BASE_URL + "v" + "/" + API_VERSION + "/"
 
 class crunchbase:
 
-  def __init__(self):
-    return None
+  def __init__(self, key):
+    self.apikey = key
 
   def __webRequest(self, url):
     try:
-      response = urllib2.urlopen(url)
+      response = urllib2.urlopen(url + "?api_key=" + self.apikey)
       result = response.read()
       return result
     except urllib2.HTTPError as e:
